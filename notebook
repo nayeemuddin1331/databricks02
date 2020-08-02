@@ -1,0 +1,35 @@
+# Databricks notebook source
+# MAGIC %md
+# MAGIC # Practice PySpark code 
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC 
+# MAGIC %md - Markdown - Text and HTML 
+# MAGIC 
+# MAGIC %fs - Databricks Utils File System (dbutils)
+# MAGIC 
+# MAGIC %sh - Shell command
+# MAGIC 
+# MAGIC %Python - Python code
+# MAGIC 
+# MAGIC %Scala - Scala code
+# MAGIC 
+# MAGIC %SQL - SQL code
+# MAGIC 
+# MAGIC %r - R code
+
+# COMMAND ----------
+
+# MAGIC %fs
+# MAGIC ls /FileStore/tables
+
+# COMMAND ----------
+
+csvData = 'dbfs:/FileStore/tables/storeorder_2020_07_01.csv'
+df = spark.read.option("sep", ",").option("inferSchema","true").option("header","true").csv(csvData).cache()
+
+# COMMAND ----------
+
+display(df)
