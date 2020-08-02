@@ -33,3 +33,63 @@ df = spark.read.option("sep", ",").option("inferSchema","true").option("header",
 # COMMAND ----------
 
 display(df)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Types of Widgets:
+# MAGIC Text
+# MAGIC Combobox
+# MAGIC Dropdown
+# MAGIC Multiselect
+
+# COMMAND ----------
+
+dbutils.widgets.help()
+
+# COMMAND ----------
+
+#Text
+dbutils.widgets.text("Text", "Hello World")
+
+# COMMAND ----------
+
+#Dropdown
+dbutils.widgets.dropdown("Dropdown", "1", [str(x) for x in range(1,10)])
+
+# COMMAND ----------
+
+#Combobox
+dbutils.widgets.combobox("Combo Box", "A", ["A", "B", "C"])
+
+# COMMAND ----------
+
+#Multi Select
+dbutils.widgets.multiselect("Multi Select", "Yes", ["Yes", "No", "May be"])
+
+# COMMAND ----------
+
+text = dbutils.widgets.get("Text")
+print(text)
+dropdown = dbutils.widgets.get("Dropdown")
+print(dropdown)
+multi = dbutils.widgets.get("Multi Select")
+print(multi)
+combo = dbutils.widgets.get("Combo Box")
+print(combo)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Cleaning Widgets
+
+# COMMAND ----------
+
+dbutils.widgets.remove("Text")
+
+# COMMAND ----------
+
+dbutils.widgets.removeAll()
+
+# COMMAND ----------
+
